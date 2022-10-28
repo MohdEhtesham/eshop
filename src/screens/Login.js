@@ -42,7 +42,7 @@ const Login = ({ navigation }) => {
             var res = await confirm.confirm(code);
 
             console.log('success', res);
-            navigation.navigate('BottomTab');
+            navigation.navigate('DrawerNavigator');
 
         } catch (error) {
             Alert.alert('invalid Code');

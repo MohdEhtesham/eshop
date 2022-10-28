@@ -6,11 +6,31 @@ import { Products } from '../screens/Products';
 import ProductItem from '../common/ProductItem';
 import { addItemToCart, addToWishList } from '../redux/actions/Actions';
 import { useDispatch, useSelector } from 'react-redux';
-const{width,length}=Dimensions.get('window')
-import { NavigationContainer, DrawerActions } from '@react-navigation/native';
+import Slideshow from "react-native-image-slider-show";
 
+const dataSource = [
+  {
+   
+    url:
+    'https://cdn.pixabay.com/photo/2019/05/05/18/58/girl-4181395__340.jpg'
+  },
+  {
+   
+    url:
+      "https://cdn.pixabay.com/photo/2014/02/01/17/50/money-256281__340.jpg"
+  },
+  {
+    // title: "Burger 3",
+    // caption: "Mouthfull Of Happiness",
+    url:
+      "https://cdn.pixabay.com/photo/2020/12/05/17/48/christmas-5806672__340.jpg"
+  }
+];
 
 const Main = ({navigation}) => {
+  
+
+  const [position, setPosition] = useState(0);
    const dispatch=useDispatch();
   const [categoryList, setCategoryList] = useState([]);
   const [shirtList, setShirtList] = useState([]);
@@ -19,6 +39,15 @@ const Main = ({navigation}) => {
   const[pantList,setPantList]=useState([]);
   const[topList,setTopList]=useState([]);
   const[lahngaList,setLahngaList]=useState([]);
+
+  useEffect(() => {
+    const toggle = setInterval(() => {
+      setPosition(position === dataSource.length - 1 ? 0 : position + 1);
+    }, 3000);
+
+    return () => clearInterval(toggle);
+  });
+
   useEffect(() => {
     let categories = [];
     Products.category.map(item => {
@@ -39,12 +68,14 @@ const Main = ({navigation}) => {
   return (
     <SafeAreaView>
        <Header />
-      <ScrollView>
+      <ScrollView
+     showsVerticalScrollIndicator={false}  >
 
-        <View style={{marginBottom:40,flex:1 }} >
+        <View style={{marginBottom:70,flex:1 }} >
          
-        <FlatList
+        {/* <FlatList
               showsHorizontalScrollIndicator={false}
+             
               horizontal
               data={categoryList}
               renderItem={({ item, index }) => {
@@ -54,29 +85,25 @@ const Main = ({navigation}) => {
 
                       width: 90,
                       height: 30,
-                      marginTop: 10,
                       borderRadius: 30,
                       borderWidth: 1,
                       justifyContent: 'center',
                       alignItems: 'center',
-                      marginLeft: 10
+
+                      marginBottom:10,
                     }}
                   >
                     <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{item}</Text>
 
                   </TouchableOpacity>
                 )
-              }} />
-          <Image source={require('eshop/src/images/download.png')}
-            style={{
-              width: '94%', height: 230, alignSelf: 'center', borderWidth: 1,
-              marginTop: 20, borderRadius: 10
-            }} />
+              }} /> */}
+      
+       <View>
+      <Slideshow position={position} dataSource={dataSource} />
+    </View>
           <View>
-          
-          </View>
-          <View>
-            <Text style={{ marginTop: 10, marginLeft: 30, fontSize: 20, color:'black',fontWeight:'600' }}>Shirts</Text>
+            <Text style={{marginTop: 5,  marginLeft: 30, fontSize: 20, color:'black',fontWeight:'600' }}>Shirts</Text>
             <FlatList
               showsHorizontalScrollIndicator={false}
               horizontal
@@ -186,4 +213,29 @@ const Main = ({navigation}) => {
 
 export default Main
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  //  container:{
+  //   flex:1
+  // },
+  // wrap:{
+  //   marginTop:5,
+  //   width:WIDTH,
+  //   height:HEIGHT*0.20
+  // },
+  // wrapDot:{
+  //   position:'absolute',
+  //   bottom:0,
+  //   flexDirection:'row',
+  //   alignSelf:'center'
+  // },
+  // dotActive:{
+  //   margin:3,
+  //   color:'red',
+
+  // },
+  // dot:{
+  //   margin:3,
+  //   color:'black'
+  // }
+
+})

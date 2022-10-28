@@ -9,33 +9,38 @@ const ProductItem = ({ item, onAddToCart ,onAddWishlist}) => {
                 width: 160,
                 height: 200,
                 marginTop: 5,
-                borderRadius: 30,
-                borderWidth: 1,
+                borderRadius: 10,
+                shadowOffset: {width: -2, height: 6},  
+                shadowColor: 'black',  
+                shadowOpacity: 0.6,  
+                shadowRadius: 3,  
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginLeft: 10, backgroundColor: 'white',
-                elevation: 5
+                marginLeft: 10,
+                elevation: 10,
+                backgroundColor: 'white',  
+                marginVertical: 10,  
             }}
         >
 
             <View style={{ width: '100%', height: '100%' }}>
                 <Image source={item.image} style={{
                     width: '60%', height: '50%',
-                    borderTopLeftRadius: 20,
-                    borderTopRightRadius: 20, alignItems: 'center', alignSelf: 'center', margin: 20
+                    borderTopLeftRadius: 10,
+                    borderTopRightRadius: 10, alignItems: 'center', alignSelf: 'center', margin: 20
                 }} />
-                <Text style={{ marginTop: 5, marginLeft: 30, fontSize: 15, fontWeight: 'bold' }}>
+                <Text style={{ marginTop: 5, marginLeft: 10, fontSize: 15, fontWeight: 'bold' }}>
                     {item.name}
                 </Text>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <Text style={{ marginTop: 5, marginBottom: 10, marginLeft: 30, fontSize: 15, fontWeight: '600' }}>
+                    <Text style={{ marginTop: 5, marginBottom: 13, marginLeft: 10, fontSize: 15, fontWeight: '600' }}>
                         {'₹' + item.price}
                     </Text>
                     <TouchableOpacity style={{
                         borderWidth: .5, padding: 5,
                         justifyContent: "center", alignItems: 'center',
                         borderRadius: 10,
-                        marginRight: 20,
+                        marginRight: 15,
                         marginBottom: 5
                     }} onPress={()=>{
                         onAddToCart(item);
@@ -52,8 +57,8 @@ const ProductItem = ({ item, onAddToCart ,onAddWishlist}) => {
 
                     justifyContent: 'center', alignItems: 'center',
                     position: 'absolute',
-                    top: 30,
-                    right: 10
+                    top: 10,
+                    right: 2
                 }} onPress={()=>{
                     onAddWishlist(item);
                 }}>
