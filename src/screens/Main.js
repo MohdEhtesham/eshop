@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Header from '../common/Header';
 import { Products } from '../screens/Products';
 import ProductItem from '../common/ProductItem';
-import { addItemToCart, addToWishList } from '../redux/actions/Actions';
+import { addItemToCart, addToWishList, showtheproduct } from '../redux/actions/Actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Slideshow from "react-native-image-slider-show";
 
@@ -32,7 +32,7 @@ const Main = ({navigation}) => {
 
   const [position, setPosition] = useState(0);
    const dispatch=useDispatch();
-  const [categoryList, setCategoryList] = useState([]);
+  const [categoryList, setCategoryList] = useState([0]);
   const [shirtList, setShirtList] = useState([]);
   const[tshirtList, setTshirtList]=useState([]);
   const[shoesList, setShoesList]=useState([]);
@@ -63,8 +63,10 @@ const Main = ({navigation}) => {
     setCategoryList(categories);
     // console.log(JSON.stringify(categories));
   }, [])
+ 
+
   const items=useSelector(state=>state);
-  // console.log(items);
+  console.log(items);
   return (
     <SafeAreaView>
        <Header />
@@ -110,12 +112,17 @@ const Main = ({navigation}) => {
               data={shirtList}
               renderItem={({ item, index }) => {
                 return (
-                  <ProductItem item={item} onAddToCart={(x)=>{
+                  <ProductItem
+                  item={item} onAddToCart={(x)=>{
                     dispatch(addItemToCart(item))
+                  }}
+                   showproduct={(x)=>{
+                    showtheproduct(item,dispatch);
                   }}
                   onAddWishlist={(x)=>{
                     dispatch(addToWishList(item))
-                  }}/>
+                  }} 
+                   />
                  )
               }} />
           </View>
@@ -129,6 +136,9 @@ const Main = ({navigation}) => {
                 return (
                   <ProductItem item={item} onAddToCart={(x)=>{
                     dispatch(addItemToCart(item))
+                  }}
+                  showproduct={(x)=>{
+                    showtheproduct(item,dispatch);
                   }}
                   onAddWishlist={(x)=>{
                     dispatch(addToWishList(item))
@@ -148,6 +158,9 @@ const Main = ({navigation}) => {
                   <ProductItem item={item} onAddToCart={(x)=>{
                     dispatch(addItemToCart(item))
                   }}
+                  showproduct={(x)=>{
+                    showtheproduct(item,dispatch);
+                  }}
                   onAddWishlist={(x)=>{
                     dispatch(addToWishList(item))
                   }}/>
@@ -164,6 +177,9 @@ const Main = ({navigation}) => {
                 return (
                   <ProductItem item={item} onAddToCart={(x)=>{
                     dispatch(addItemToCart(item))
+                  }}
+                  showproduct={(x)=>{
+                    showtheproduct(item,dispatch);
                   }}
                   onAddWishlist={(x)=>{
                     dispatch(addToWishList(item))
@@ -182,6 +198,9 @@ const Main = ({navigation}) => {
                   <ProductItem item={item} onAddToCart={(x)=>{
                     dispatch(addItemToCart(item))
                   }}
+                  showproduct={(x)=>{
+                    showtheproduct(item,dispatch);
+                  }}
                   onAddWishlist={(x)=>{
                     dispatch(addToWishList(item))
                   }}/>
@@ -198,6 +217,9 @@ const Main = ({navigation}) => {
                 return (
                  <ProductItem item={item} onAddToCart={(x)=>{
                   dispatch(addItemToCart(item))
+                }}
+                showproduct={(x)=>{
+                  showtheproduct(item,dispatch);
                 }}
                 onAddWishlist={(x)=>{
                   dispatch(addToWishList(item))

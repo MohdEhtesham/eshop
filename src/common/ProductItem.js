@@ -1,7 +1,10 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
 
-const ProductItem = ({ item, onAddToCart ,onAddWishlist}) => {
+
+const ProductItem = ({ item, onAddToCart, onAddWishlist ,showproduct}) => {
+    const navigation =useNavigation();
     return (
         <TouchableOpacity
             style={{
@@ -10,17 +13,24 @@ const ProductItem = ({ item, onAddToCart ,onAddWishlist}) => {
                 height: 200,
                 marginTop: 5,
                 borderRadius: 10,
-                shadowOffset: {width: -2, height: 6},  
-                shadowColor: 'black',  
-                shadowOpacity: 0.6,  
-                shadowRadius: 3,  
+                shadowOffset: { width: -2, height: 6 },
+                shadowColor: 'black',
+                shadowOpacity: 0.6,
+                shadowRadius: 3,
                 justifyContent: 'center',
                 alignItems: 'center',
                 marginLeft: 10,
                 elevation: 10,
-                backgroundColor: 'white',  
-                marginVertical: 10,  
+                backgroundColor: 'white',
+                marginVertical: 10,
             }}
+
+            onPress={() => {
+                showproduct(item);
+                navigation.navigate('NestedScreen')
+
+            }}
+
         >
 
             <View style={{ width: '100%', height: '100%' }}>
@@ -42,8 +52,9 @@ const ProductItem = ({ item, onAddToCart ,onAddWishlist}) => {
                         borderRadius: 10,
                         marginRight: 15,
                         marginBottom: 5
-                    }} onPress={()=>{
+                    }} onPress={() => {
                         onAddToCart(item);
+
                     }}>
 
                         <Text style={{ fontSize: 10, fontWeight: '600' }}>
@@ -51,7 +62,7 @@ const ProductItem = ({ item, onAddToCart ,onAddWishlist}) => {
                         </Text>
                     </TouchableOpacity>
                 </View>
-                
+
                 <TouchableOpacity style={{
                     width: 40, height: 40,
 
@@ -59,7 +70,7 @@ const ProductItem = ({ item, onAddToCart ,onAddWishlist}) => {
                     position: 'absolute',
                     top: 10,
                     right: 2
-                }} onPress={()=>{
+                }} onPress={() => {
                     onAddWishlist(item);
                 }}>
                     <Image
