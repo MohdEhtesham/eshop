@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Header from '../common/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart, addToWishList, removeFromCart } from '../redux/actions/Actions';
-import Productview from '../common/Prductview';
+// import Productview from '../common/Prductview';
 
 const NestedScreen = ({  onRemoveItem ,onAddWishlist ,isWishlist,onAddToCart,onRemoveFromWishlist}) => {
   const [cartList, setCartList] = useState([]);
