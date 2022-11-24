@@ -5,21 +5,24 @@ import CartItem from '../common/CartItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToWishList, removeFromCart } from '../redux/actions/Actions';
 
-const Cart = () => {
+const Cart = ({item}) => {
   const [cartList, setCartList] = useState([]);
   const cartData = useSelector(state => state.Reducers);
   const dispatch=useDispatch();
-  // setCartList(cartData);
+  
+
   return (
     <SafeAreaView >
       <Header />
       {console.log("cartdadddddd",cartData)}
 
-      <View style={[{marginBottom:250}]}>
+      <View style={[{marginBottom:70}]}>
         <FlatList data={cartData} 
         
         renderItem={({ item, index }) => {
-          return <CartItem item={item}
+        
+          return <CartItem 
+           item={item}
           onAddWishlist={(x)=>{
             dispatch(addToWishList(item))
           }}
@@ -34,6 +37,10 @@ const Cart = () => {
     </SafeAreaView>
   )
 }
+    
+
+
+
 
 export default Cart
 

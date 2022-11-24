@@ -24,10 +24,7 @@ const Profile = () => {
             }}
               source={require('eshop/src/images/userlogo.png')} />
           </TouchableOpacity>
-          <Text style={{
-
-
-          }}>{user.name}</Text>
+          
           <Text style={{
             justifyContent: 'center',
             alignSelf: 'center',

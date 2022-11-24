@@ -36,7 +36,7 @@ const BottomTab = () => {
           labelStyle: { fontSize: 18 },
 
         }}
-
+      
       >
         <Tab.Screen
           name="main"

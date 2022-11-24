@@ -24,7 +24,7 @@ const FirstScreenNavigator = () => {
         component={Main}
       />
       <Stack.Screen
-        name="NestedScreen1"
+        name="NestedScreen"
         component={NestedScreen}
       />
     </Stack.Navigator>

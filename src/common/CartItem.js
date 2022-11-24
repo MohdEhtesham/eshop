@@ -1,19 +1,27 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 
-const CartItem = ({ item, onRemoveItem ,onAddWishlist ,isWishlist,onAddToCart,onRemoveFromWishlist}) => {
+const CartItem = ({ item, onRemoveItem ,onAddWishlist ,isWishlist,onAddToCart,onRemoveFromWishlist,showtheproduct}) => {
     return (
         <TouchableOpacity
             style={{
 
                 width: '94%',
                 height: 200,
-                marginTop: 5,
-                borderRadius: 30,
+                shadowOffset: { width: -2, height: 6 },
+                shadowColor: 'black',
+                shadowOpacity: 0.6,
+                shadowRadius: 3,
+                justifyContent: 'center',
+                alignItems: 'center',
+                elevation: 10,
+                backgroundColor: 'white',
+                marginVertical: 10,
+                borderRadius: 20,
                 borderWidth: 1,
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginLeft: 10, backgroundColor: 'white',
+                marginLeft: 10,
                 elevation: 5
             }}
         >
@@ -60,6 +68,7 @@ const CartItem = ({ item, onRemoveItem ,onAddWishlist ,isWishlist,onAddToCart,on
                                     Remove Item
                                 </Text>
                             </TouchableOpacity>
+                            
                         
                         
                         )}

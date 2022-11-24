@@ -54,7 +54,7 @@ const Reducers = (state = [], action) => {
             return [...state, action.payload];
         case REMOVE_FROM_CART:
             const deletedArray1 = state.filter((item, index) => {
-                return index !== action.payload
+                return index !== action.payload.id
             })
 
             return deletedArray1;

@@ -8,6 +8,7 @@ const Search = () => {
     <SafeAreaView >
     <View>
       <Header />
+      
     </View>
     </SafeAreaView >
   )
