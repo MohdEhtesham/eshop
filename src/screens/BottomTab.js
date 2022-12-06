@@ -10,6 +10,8 @@ import {
   ThirdScreenNavigator
 } from '../../CustomNavigation'
 import { Image, } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -41,27 +43,38 @@ const BottomTab = () => {
         <Tab.Screen
           name="main"
           component={FirstScreenNavigator}
+          screenOptions={({ route }) => ({
+            tabBarActiveTintColor: "#f5610a",
+            tabBarInactiveTintColor: "#555",
+            tabBarLabelStyle: {
+              fontSize: 10,
+            },
+          })}
           options={{
+            
             activeTintColor: 'green',
             tabBarIcon: () => (
               <Image
                 style={{ height: 20, width: 20 }}
                 source={require('eshop/src/images/home.png')
                 } />
+              // <Icon name="home" size={30} color="black" />
             ),
-            tabBarLabel: 'Home'
+            tabBarLabel: 'Home',
+            
           }}
         />
         <Tab.Screen
           name="search"
           component={SecondScreenNavigator}
           options={{
-            activeTintColor: 'green',
+            activeTintColor: 'black',
             tabBarIcon: () => (
               <Image
                 style={{ height: 20, width: 20 }}
                 source={require('eshop/src/images/search.png')
                 } />
+              // <Icon name="search" size={30} color="black" />
             ),
             tabBarLabel: 'Search'
           }}
@@ -77,6 +90,7 @@ const BottomTab = () => {
                 style={{ height: 20, width: 20 }}
                 source={require('eshop/src/images/1082823.png')
                 } />
+              // <Icon name="shopping-cart" size={30} color="black" />
             ),
             tabBarLabel: 'Cart'
           }}
@@ -92,8 +106,11 @@ const BottomTab = () => {
                 style={{ height: 20, width: 20 }}
                 source={require('eshop/src/images/wish.png')
                 } />
+              // <Icon name="heart" size={30} color="black" />
+              
             ),
-            tabBarLabel: 'Wishlist'
+            tabBarLabel: 'Wishlist',
+            
           }}
 
         />
@@ -101,13 +118,22 @@ const BottomTab = () => {
           name="profile"
           component={FifthScreenNavigator}  // Replaced Screen 3
           options={{
+            
+           
             tabBarIcon: () => (
               <Image
                 style={{ height: 20, width: 20 }}
                 source={require('eshop/src/images/user.png')
                 } />
+              
+              // <Icon name="user" size={30} color="black" />
             ),
-            tabBarLabel: 'Profile'
+            tabBarLabel: 'Profile',
+            
+           
+             
+                
+          
           }}
 
         />

@@ -66,7 +66,7 @@ const Main = ({navigation}) => {
  
 
   const items=useSelector(state=>state);
-  console.log(items);
+  // console.log(items);
   return (
     <SafeAreaView>
        <Header />
@@ -113,9 +113,7 @@ const Main = ({navigation}) => {
               renderItem={({ item, index }) => {
                 return (
                   <ProductItem
-                  item={item} onAddToCart={(x)=>{
-                    dispatch(addItemToCart(item))
-                  }}
+                  item={item} 
                    showproduct={(x)=>{
                     showtheproduct(item,dispatch);
                   }}
@@ -134,9 +132,8 @@ const Main = ({navigation}) => {
               data={tshirtList}
               renderItem={({ item, index }) => {
                 return (
-                  <ProductItem item={item} onAddToCart={(x)=>{
-                    dispatch(addItemToCart(item))
-                  }}
+                  <ProductItem item={item}
+                  
                   showproduct={(x)=>{
                     showtheproduct(item,dispatch);
                   }}
@@ -155,9 +152,8 @@ const Main = ({navigation}) => {
               data={shoesList}
               renderItem={({ item, index }) => {
                 return (
-                  <ProductItem item={item} onAddToCart={(x)=>{
-                    dispatch(addItemToCart(item))
-                  }}
+                  <ProductItem item={item} 
+                 
                   showproduct={(x)=>{
                     showtheproduct(item,dispatch);
                   }}
@@ -175,9 +171,8 @@ const Main = ({navigation}) => {
               data={pantList}
               renderItem={({ item, index }) => {
                 return (
-                  <ProductItem item={item} onAddToCart={(x)=>{
-                    dispatch(addItemToCart(item))
-                  }}
+                  <ProductItem item={item} 
+                
                   showproduct={(x)=>{
                     showtheproduct(item,dispatch);
                   }}
@@ -195,9 +190,8 @@ const Main = ({navigation}) => {
               data={topList}
               renderItem={({ item, index }) => {
                 return (
-                  <ProductItem item={item} onAddToCart={(x)=>{
-                    dispatch(addItemToCart(item))
-                  }}
+                  <ProductItem item={item}
+                   
                   showproduct={(x)=>{
                     showtheproduct(item,dispatch);
                   }}
@@ -215,9 +209,10 @@ const Main = ({navigation}) => {
               data={lahngaList}
               renderItem={({ item, index }) => {
                 return (
-                 <ProductItem item={item} onAddToCart={(x)=>{
-                  dispatch(addItemToCart(item))
-                }}
+                 <ProductItem item={item} 
+                //  onAddToCart={(x)=>{
+                //   dispatch(addItemToCart(item))
+                // }}
                 showproduct={(x)=>{
                   showtheproduct(item,dispatch);
                 }}

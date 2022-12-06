@@ -8,7 +8,7 @@ import {
 } from "../ActionType";
 
 export const addItemToCart = data => ({
-    type: ADD_TO_CART,
+    type: ADD_TO_CART,  
     payload: data,
 
 });

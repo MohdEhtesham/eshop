@@ -84,3 +84,21 @@ Output ->
   {fullName: "Akshay Khurana", age: 27},
   {fullName: "Salman Khan", age: 55}
 ]
+ cartData.forEach((cartItem, indexC) => {
+                            if (cartItem.id === item.id) {
+                                Alert.alert('Already added');
+                            }else {
+                                dispatch(addItemToCart(item))
+                            }
+
+                             cartData.forEach((cartItem, indexC) => {
+                            if (cartItem.id == item.id) {
+                                Alert.alert('Already added');
+                                
+                            }else {
+                                dispatch(addItemToCart(item))
+                                //  onAddToCart(item);
+                               
+                            }
+                        }
+                        )

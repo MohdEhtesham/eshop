@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Header from '../common/Header';
 import CartItem from '../common/CartItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToWishList, removeFromCart } from '../redux/actions/Actions';
+import { addToWishList, removeFromCart, } from '../redux/actions/Actions';
 
 const Cart = ({item}) => {
   const [cartList, setCartList] = useState([]);
@@ -12,6 +12,7 @@ const Cart = ({item}) => {
   
 
   return (
+   
     <SafeAreaView >
       <Header />
       {console.log("cartdadddddd",cartData)}
@@ -27,8 +28,11 @@ const Cart = ({item}) => {
             dispatch(addToWishList(item))
           }}
           onRemoveItem={()=>{
-          dispatch(removeFromCart(index))
-          }} />;
+            dispatch(removeFromCart(index))
+          }}
+          
+          
+          />;
           
 
         }} />

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react';
 import Header from '../common/Header';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +7,7 @@ import { addItemToCart, addToWishList, removeFromCart } from '../redux/actions/A
 
 const NestedScreen = ({  onRemoveItem ,onAddWishlist ,isWishlist,onAddToCart,onRemoveFromWishlist}) => {
   const [cartList, setCartList] = useState([]);
+  const cartData = useSelector(state => state.Reducers);
   const item = useSelector(state => state.home.selectedProduct);
   const dispatch = useDispatch();
   
@@ -75,8 +76,17 @@ const NestedScreen = ({  onRemoveItem ,onAddWishlist ,isWishlist,onAddToCart,onR
                   marginRight: 20,
                   marginBottom: 5
                 }} onPress={() => {
-                  dispatch(addItemToCart(item))
-                }}>
+                  let isCart = false;
+                  cartData.forEach((cartItem) => {
+                      if (cartItem.id === item.id) {
+                          Alert.alert('Already added');
+                          isCart = true;
+                      }
+                  })
+                  if (!isCart) {
+                      dispatch(addItemToCart(item))
+                  }
+              }}>
 
                   <Text style={{ fontSize: 15, fontWeight: '600' }}>
                     Add To Cart

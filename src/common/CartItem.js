@@ -1,7 +1,9 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Alert } from 'react-native'
 import React from 'react'
+import { useSelector } from 'react-redux';
 
-const CartItem = ({ item, onRemoveItem ,onAddWishlist ,isWishlist,onAddToCart,onRemoveFromWishlist,showtheproduct}) => {
+const CartItem = ({ item, onRemoveItem ,onAddWishlist ,isWishlist,onRemoveFromWishlist,showtheproduct}) => {
+    const cartData = useSelector(state => state.Reducers);
     return (
         <TouchableOpacity
             style={{
@@ -35,6 +37,7 @@ const CartItem = ({ item, onRemoveItem ,onAddWishlist ,isWishlist,onAddToCart,on
                 <Text style={{ marginTop: 5, marginLeft: 30, fontSize: 15, fontWeight: 'bold' }}>
                     {item.name}
                 </Text>
+                
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                     <Text style={{ marginTop: 5, marginBottom: 10, marginLeft: 30, fontSize: 15, fontWeight: '600' }}>
                         {'₹' + item.price}
@@ -46,8 +49,17 @@ const CartItem = ({ item, onRemoveItem ,onAddWishlist ,isWishlist,onAddToCart,on
                             borderRadius: 10,
                             marginRight: 20,
                             marginBottom: 5
-                        }} onPress={()=>{
-                            onAddToCart(item);
+                        }} onPress={() => {
+                            let isCart = false;
+                            cartData.forEach((cartItem) => {
+                                if (cartItem.id === item.id) {
+                                    Alert.alert('Already added');
+                                    isCart = true;
+                                }
+                            })
+                            if (!isCart) {
+                                dispatch(addItemToCart(item))
+                            }
                         }}>
     
                             <Text style={{ fontSize: 15, fontWeight: '600' }}>
@@ -85,8 +97,7 @@ const CartItem = ({ item, onRemoveItem ,onAddWishlist ,isWishlist,onAddToCart,on
                     }} onPress={()=>{
                         onRemoveFromWishlist();
                     }}>
-                        <Image
-                            source={require('eshop/src/images/redheart.png')} style={{ width: 24, height: 24, }} />
+                        <Image source={require('eshop/src/images/redheart.png')} style={{ width: 24, height: 24, }} />
     
                     </TouchableOpacity>
                 ):(
