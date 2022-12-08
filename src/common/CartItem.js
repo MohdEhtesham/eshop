@@ -1,9 +1,12 @@
 import { View, Text, TouchableOpacity, Image, Alert } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 const CartItem = ({ item, onRemoveItem ,onAddWishlist ,isWishlist,onRemoveFromWishlist,showtheproduct}) => {
     const cartData = useSelector(state => state.Reducers);
+   
     return (
         <TouchableOpacity
             style={{
@@ -96,8 +99,9 @@ const CartItem = ({ item, onRemoveItem ,onAddWishlist ,isWishlist,onRemoveFromWi
                         right: 10
                     }} onPress={()=>{
                         onRemoveFromWishlist();
+                        onPressHeart()
                     }}>
-                        <Image source={require('eshop/src/images/redheart.png')} style={{ width: 24, height: 24, }} />
+                       <Icon name= "heart"  size={25} color="#900"/>
     
                     </TouchableOpacity>
                 ):(

@@ -68,7 +68,7 @@ const BottomTab = () => {
           name="search"
           component={SecondScreenNavigator}
           options={{
-            activeTintColor: 'black',
+
             tabBarIcon: () => (
               <Image
                 style={{ height: 20, width: 20 }}

@@ -2,15 +2,23 @@ import { View, Text, TouchableOpacity, Image, Alert } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItemToCart } from '../redux/actions/Actions';
+import { addItemToCart, removeFromWhislist } from '../redux/actions/Actions';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { useState } from 'react';
 
 
-const ProductItem = ({ item, onAddToCart, onAddWishlist, showproduct,  }) => {
-    // let iswish = true;
+const ProductItem = ({ props, item, onAddToCart, onAddWishlist, showproduct, onRemoveFromWishlist }) => {
+
     const navigation = useNavigation();
     const cartData = useSelector(state => state.Reducers);
     const cartData2 = useSelector(state => state.Reducers2);
     const dispatch = useDispatch();
+    const [isUserLike, setIsuserLike] = useState(isUserLike);
+
+    const onPressHeart = () => {
+        setIsuserLike(!isUserLike);
+    };
+
 
     return (
         <TouchableOpacity
@@ -60,7 +68,7 @@ const ProductItem = ({ item, onAddToCart, onAddWishlist, showproduct,  }) => {
                         marginRight: 15,
                         marginBottom: 5
                     }} onPress={() => {
-                        
+
                         let isCart = false;
                         cartData.forEach((cartItem) => {
                             if (cartItem.id === item.id) {
@@ -91,12 +99,12 @@ const ProductItem = ({ item, onAddToCart, onAddWishlist, showproduct,  }) => {
                     //     onAddWishlist(item);
                     // }}
                     onPress={() => {
-                         
+                        onPressHeart();
                         let isCart = false;
-                        cartData2.forEach((cartItem) => {
+                        cartData2.forEach((cartItem , index) => {
                             if (cartItem.id === item.id) {
-                                <Image source={require('eshop/src/images/heart.png')} style={{ width: 24, height: 24, }} />
-                                Alert.alert("already added");
+                                Alert.alert('remove from wishist');
+                                dispatch(removeFromWhislist(index))
 
                                 isCart = true;
                             }
@@ -104,12 +112,12 @@ const ProductItem = ({ item, onAddToCart, onAddWishlist, showproduct,  }) => {
                         if (!isCart) {
 
                             onAddWishlist(item);
-                            <Image source={require('eshop/src/images/heart.png')} style={{ width: 24, height: 24, }} />
+
                         }
                     }}
 
                 >
-{/*                     
+                    {/*                     
                     {iswish ? (
                         <Image source={require('eshop/src/images/redheart.png')} style={{ width: 24, height: 24, }} />
                     
@@ -117,12 +125,17 @@ const ProductItem = ({ item, onAddToCart, onAddWishlist, showproduct,  }) => {
 
                         <Image source={require('eshop/src/images/heart.png')} style={{ width: 24, height: 24, }} />
                     )} */}
+
+
+
+
                     {
-                   
-                   <Image source={require('eshop/src/images/heart.png')} style={{ width: 24, height: 24, }} />
-                
-                }
+                        <Icon name={isUserLike ? "heart" : "heart-o"} size={25} color="#900"/>
+                        // <Image source={require('eshop/src/images/heart.png')} style={{ width: 24, height: 24, }} />
+
+                    }
                 </TouchableOpacity>
+
             </View>
 
 

@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Header from '../common/Header';
 import { Products } from '../screens/Products';
 import ProductItem from '../common/ProductItem';
-import { addItemToCart, addToWishList, showtheproduct } from '../redux/actions/Actions';
+import { addItemToCart, addToWishList, removeFromWhislist, showtheproduct, } from '../redux/actions/Actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Slideshow from "react-native-image-slider-show";
 
@@ -120,6 +120,9 @@ const Main = ({navigation}) => {
                   onAddWishlist={(x)=>{
                     dispatch(addToWishList(item))
                   }} 
+                  
+                  
+
                    />
                  )
               }} />
@@ -230,29 +233,3 @@ const Main = ({navigation}) => {
 
 export default Main
 
-const styles = StyleSheet.create({
-  //  container:{
-  //   flex:1
-  // },
-  // wrap:{
-  //   marginTop:5,
-  //   width:WIDTH,
-  //   height:HEIGHT*0.20
-  // },
-  // wrapDot:{
-  //   position:'absolute',
-  //   bottom:0,
-  //   flexDirection:'row',
-  //   alignSelf:'center'
-  // },
-  // dotActive:{
-  //   margin:3,
-  //   color:'red',
-
-  // },
-  // dot:{
-  //   margin:3,
-  //   color:'black'
-  // }
-
-})
