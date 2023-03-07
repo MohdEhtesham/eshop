@@ -1,30 +1,27 @@
 // // // In App.js in a new project
 
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {View, Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import BottomTab from './src/screens/BottomTab';
 import Login from './src/screens/Login';
 import Splash from './src/screens/Splash';
 import DrawerNavigator from './src/navigation/DrawerNavigator';
 
-
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
-    <NavigationContainer >
-      <Stack.Navigator   screenOptions={{
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
           headerShown: false,
-          labelStyle: { fontSize: 18 },
-
+          labelStyle: {fontSize: 18},
         }}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
-
-        
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -32,14 +29,10 @@ function App() {
 
 export default App;
 
-
 // import React from "react";
 // import { NavigationContainer } from "@react-navigation/native";
 
 // import DrawerNavigator from "./src/navigation/DrawerNavigator";
-
-
-
 
 //  const App = () => {
 //   return (
@@ -49,10 +42,6 @@ export default App;
 //   );
 // }
 // export default App;
-
-
-
-
 
 // import React, { useState, useEffect } from "react";
 // import { View, StyleSheet } from "react-native";

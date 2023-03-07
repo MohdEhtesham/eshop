@@ -1,5 +1,5 @@
-import React from "react";
-import { View, StyleSheet, Text, Button } from "react-native";
+import React from 'react';
+import {View, StyleSheet, Text, Button} from 'react-native';
 
 const Contact = ({navigation}) => {
   return (
@@ -16,9 +16,9 @@ const Contact = ({navigation}) => {
 const styles = StyleSheet.create({
   center: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
   },
 });
 
