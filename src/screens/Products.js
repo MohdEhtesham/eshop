@@ -4,6 +4,7 @@ export const Products = {
       category: 'Shirt',
       data: [
         {
+          categoryId:"640715be9f3dbb6b25b77913",
           id: '10',
           name: 'shirt-1',
           price: 300,
@@ -11,6 +12,7 @@ export const Products = {
           image: require('eshop/src/images/shirt1.jpeg'),
         },
         {
+          categoryId:"640715be9f3dbb6b25b77913",
           id: '11',
           name: 'shirt-2',
           price: 300,

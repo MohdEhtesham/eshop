@@ -38,7 +38,7 @@ const Login = ({navigation}) => {
   };
 
   async function signInWithPhoneNumber() {
-    const confirmation = await auth().signInWithPhoneNumber('+918382879119');
+    const confirmation = await auth().signInWithPhoneNumber(`+91${phone}`);
     // (`+91${phone}`);
     setConfirm(confirmation);
   }
@@ -79,7 +79,7 @@ const Login = ({navigation}) => {
           </View>
 
           <TouchableOpacity
-            onPress={() => signInWithPhoneNumber('+918382879119')}>
+            onPress={() => signInWithPhoneNumber()}>
             <Text style={styles.btn}>Login</Text>
           </TouchableOpacity>
         </View>
@@ -178,3 +178,4 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
 });
+ 
